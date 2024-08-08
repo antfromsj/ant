@@ -1,1 +1,235 @@
-# uliexpress.co
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PORTFOLIO</title>
+  <style>
+    /* Basic Styling */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: black;
+      color: white;
+      font-family: 'Perfect DOS VGA 437', monospace;
+      text-align: center;
+      cursor: url('cur827.cur'), default;
+    }
+
+    a, a:hover {
+      cursor: url('c.cur'), progress;
+      color: white;
+      text-decoration: none;
+    }
+
+    h1, h2, h3 {
+      color: #eee;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Layout */
+    .container {
+      max-width: 960px;
+      margin: 20px auto; /* Reduced top/bottom margin */
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .top-links {
+      text-align: right;
+      margin-bottom: 20px; /* Space between links and content */
+    }
+
+    .top-links a {
+      text-decoration: underline;
+      margin-left: 20px;
+    }
+
+    /* Buttons */
+    .category-button {
+      display: inline-block;
+      margin: 10px; /* Reduced margin */
+      padding: 15px 30px; /* Reduced padding */
+      background-color: #333;
+      color: #eee;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, font-size 0.3s; /* Added font-size transition */
+      font-family: 'Perfect DOS VGA 437', monospace; /* Added font */
+    }
+
+    .category-button:hover {
+      background-color: #555;
+    }
+
+    .category-button.active {
+      font-size: 1.2em; /* Make active button bigger */
+    }
+
+    /* Portfolio Sections */
+    .portfolio-section {
+      display: none;
+      margin-bottom: 4rem;
+      background-color: #222;
+      padding: 2rem;
+      border-radius: 10px;
+    }
+
+    .portfolio-section.active {
+      display: block;
+    }
+
+    /* Website Projects */
+    .website-project {
+      background-color: #111;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-radius: 5px;
+    }
+
+    .website-project img {
+      margin-bottom: 1rem;
+    }
+
+    /* YouTube Videos */
+    .video-folder {
+      background-color: #111;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .video-container {
+      display: none;
+      margin-top: 2rem;
+    }
+
+    .video-container.show {
+      display: block;
+    }
+
+    .video-info {
+      margin-top: 1rem;
+    }
+
+    /* About Me */
+    .about-me {
+      background-color: #111;
+      padding: 2rem;
+      border-radius: 5px;
+    }
+
+    /* Folder Icon */
+    .folder-icon {
+      font-family: 'Perfect DOS VGA 437';
+      font-size: 24px;
+      margin-right: 10px;
+    }
+
+    .folder-icon:before {
+      content: '\f07b';
+    }
+
+    /* Made by ant */
+    .made-by {
+      text-align: left;
+      margin-top: 20px; /* Space between content and signature */
+      font-size: 0.8em; /* Slightly smaller font size */
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="top-links">
+      <a href="/">HOME</a>
+      <a href="https://instagram.com/antfromsc">IG</a>
+    </div>
+
+    <h1>PORTFOLIO</h1>
+
+    <button class="category-button active" data-target="websites">Websites</button>
+    <button class="category-button" data-target="videos">
+      <span class="folder-icon"></span>
+      YouTube Videos
+    </button>
+    <button class="category-button" data-target="about">About Me</button>
+
+    <section class="portfolio-section active" id="websites">
+      <h2>WEBSITES I MADE</h2>
+
+      <div class="website-project">
+        <a href="https://uliexpress.co" target="_blank">
+          <img src="images/uliexpress.png" alt="Uli Express Screenshot">
+        </a>
+        <h3>ULIEXPRESS.CO</h3>
+        <p>The first website I ever made for a family member's delivery business. Still a work in progress.</p>
+      </div>
+
+    </section>
+
+    <section class="portfolio-section" id="videos">
+      <h2>VIDEOS I MADE</h2>
+
+      <div class="video-folder">
+        <h3><span class="folder-icon"></span> PITMAN HIGH SCHOOL</h3>
+        <div class="video-container">
+          <iframe width="560" height="315" src="https://youtu.be/kyuQwCb5GJE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <h4>JAY YEE FOR TERRY BRYANT</h4>
+          <p>Scholarship application made for Jay Yee. Created by Jay Yee & I.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="portfolio-section" id="about">
+      <h2>ABOUT ME</h2>
+      <div class="about-me">
+        <p>My legal name is Martin Anthony Torres but I usually never go by Martin, I personally hate the name. It's getting changed to just Anthony Torres, or maybe i'll also change my last name. Not too sure yet. Personal stuff out of the way, I edit with Adobe Premiere Pro, I ocassionaly use Adobe Photoshop for photo editing but I personally prefer using paint.net with every addon under the sea. Contact me via email for inquiries. </p>
+      </div>
+    </section>
+
+    <div class="made-by">[made by ant]</div>
+  </div>
+
+  <script>
+    const categoryButtons = document.querySelectorAll('.category-button');
+    const portfolioSections = document.querySelectorAll('.portfolio-section');
+    const videoFolders = document.querySelectorAll('.video-folder');
+
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const targetSectionId = button.getAttribute('data-target');
+        const targetSection = document.getElementById(targetSectionId);
+
+        // Remove active class from all buttons and sections
+        categoryButtons.forEach(btn => btn.classList.remove('active'));
+        portfolioSections.forEach(section => section.classList.remove('active'));
+
+        // Add active class to clicked button and target section
+        button.classList.add('active');
+        targetSection.classList.add('active');
+      });
+    });
+
+    videoFolders.forEach(folder => {
+      folder.addEventListener('click', () => {
+        const videoContainer = folder.querySelector('.video-container');
+        videoContainer.classList.toggle('show');
+        folder.classList.toggle('open');
+      });
+    });
+  </script>
+
+</body>
+</html>
