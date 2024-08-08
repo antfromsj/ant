@@ -37,33 +37,34 @@
     /* Layout */
     .container {
       max-width: 960px;
-      margin: 20px auto; /* Reduced top/bottom margin */
+      margin: 20px auto;
       padding: 2rem;
       text-align: center;
     }
 
     .top-links {
-      text-align: right;
-      margin-bottom: 20px; /* Space between links and content */
+      display: flex; /* Use flexbox for better alignment */
+      justify-content: space-between; /* Align links to both ends */
+      align-items: center; /* Vertically align items */
+      margin-bottom: 20px;
     }
 
     .top-links a {
       text-decoration: underline;
-      margin-left: 20px;
     }
 
     /* Buttons */
     .category-button {
       display: inline-block;
-      margin: 10px; /* Reduced margin */
-      padding: 15px 30px; /* Reduced padding */
+      margin: 10px;
+      padding: 15px 30px;
       background-color: #333;
       color: #eee;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s, font-size 0.3s; /* Added font-size transition */
-      font-family: 'Perfect DOS VGA 437', monospace; /* Added font */
+      transition: background-color 0.3s, font-size 0.3s;
+      font-family: 'Perfect DOS VGA 437', monospace;
     }
 
     .category-button:hover {
@@ -71,7 +72,7 @@
     }
 
     .category-button.active {
-      font-size: 1.2em; /* Make active button bigger */
+      font-size: 1.2em;
     }
 
     /* Portfolio Sections */
@@ -142,8 +143,8 @@
     /* Made by ant */
     .made-by {
       text-align: left;
-      margin-top: 20px; /* Space between content and signature */
-      font-size: 0.8em; /* Slightly smaller font size */
+      margin-top: 20px;
+      font-size: 0.8em;
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -158,14 +159,14 @@
 
     <h1>PORTFOLIO</h1>
 
-    <button class="category-button active" data-target="websites">Websites</button>
+    <button class="category-button" data-target="websites">Websites</button>
     <button class="category-button" data-target="videos">
       <span class="folder-icon"></span>
       YouTube Videos
     </button>
     <button class="category-button" data-target="about">About Me</button>
 
-    <section class="portfolio-section active" id="websites">
+    <section class="portfolio-section" id="websites">
       <h2>WEBSITES I MADE</h2>
 
       <div class="website-project">
@@ -206,6 +207,9 @@
     const categoryButtons = document.querySelectorAll('.category-button');
     const portfolioSections = document.querySelectorAll('.portfolio-section');
     const videoFolders = document.querySelectorAll('.video-folder');
+
+    // Initially hide all portfolio sections
+    portfolioSections.forEach(section => section.classList.remove('active'));
 
     categoryButtons.forEach(button => {
       button.addEventListener('click', () => {
