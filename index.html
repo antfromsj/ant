@@ -5,141 +5,171 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>[ant]</title>
   <style>
-  @font-face {
-    font-family: 'Perfect DOS VGA 437';
-    src: url('Perfect DOS VGA 437.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: black;
-    color: white;
-    font-family: 'Perfect DOS VGA 437', monospace;
-    text-align: center;
-    cursor: url('cur827.cur'), default;
-    -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    filter: blur(5px);
-    transition: filter 0.5s ease;
-    overflow: hidden;
-  }
-
-  a, a:hover {
-    cursor: url('c.cur'), progress;
-    color: white;
-    text-decoration: none;
-  }
-
-  body.clicked {
-    -webkit-filter: blur(0px);
-    -moz-filter: blur(0px);
-    filter: blur(0px);
-  }
-
-  .centered {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-  }
-
-  footer {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    font-size: 12px;
-  }
-
-  .text-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-
-  .fading-text {
-    font-size: 24px;
-    opacity: 0;
-    animation: fadeInOut 10s linear infinite;
-    margin-top: 10px;
-  }
-
-  .fading-text:nth-child(1) { animation-delay: 0s; }
-  .fading-text:nth-child(2) { animation-delay: 2s; }
-  .fading-text:nth-child(3) { animation-delay: 4s; }
-  .fading-text:nth-child(4) { animation-delay: 6s; }
-
-  @keyframes fadeInOut {
-    0% { opacity: 0; }
-    20% { opacity: 1; }
-    80% { opacity: 1; }
-    100% { opacity: 0; }
-  }
-
-  .ant-rain {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .ant {
-    position: absolute;
-    font-size: 24px;
-    animation: antFall 12s linear infinite;
-    pointer-events: none;
-    opacity: 0.8;
-  }
-
-  @keyframes antFall {
-    0% {
-      top: -10px;
-      left: var(--start-position);
-      opacity: 1;
+    @font-face {
+      font-family: 'Perfect DOS VGA 437';
+      src: url('Perfect DOS VGA 437.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
     }
-    100% {
-      top: 100%;
-      left: var(--start-position);
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: black;
+      color: white;
+      font-family: 'Perfect DOS VGA 437', monospace;
+      text-align: center;
+      cursor: url('cur827.cur'), default;
+      -webkit-filter: blur(5px);
+      -moz-filter: blur(5px);
+      filter: blur(5px);
+      transition: filter 0.5s ease;
+      overflow: hidden;
+    }
+
+    a, a:hover {
+      cursor: url('c.cur'), progress;
+      color: white;
+      text-decoration: none;
+    }
+
+    body.clicked {
+      -webkit-filter: blur(0px);
+      -moz-filter: blur(0px);
+      filter: blur(0px);
+    }
+
+    .centered {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      text-align: center; /* Center text on all screen sizes */
+    }
+
+    footer {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      font-size: 12px;
+    }
+
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .fading-text {
+      font-size: 24px;
       opacity: 0;
+      animation: fadeInOut 10s linear infinite;
+      margin-top: 10px;
     }
-  }
 
-  .text-container img {
-    margin-bottom: 20px;
-  }
+    .fading-text:nth-child(1) { animation-delay: 0s; }
+    .fading-text:nth-child(2) { animation-delay: 2s; }
+    .fading-text:nth-child(3) { animation-delay: 4s; }
+    .fading-text:nth-child(4) { animation-delay: 6s; }
 
-  .contact-button {
-    font-size: 24px;
-    text-decoration: underline;
-    text-decoration-style: solid;
-    text-underline-offset: 3px;
-    margin-top: 20px;
-  }
+    @keyframes fadeInOut {
+      0% { opacity: 0; }
+      20% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { opacity: 0; }
+    }
 
-  /* Styles for the external buttons */
-  .external-buttons {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    display: flex;
-  }
+    .ant-rain {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-  .external-buttons a {
-    margin-left: 10px;
-    text-decoration: underline;
-  }
+    .ant {
+      position: absolute;
+      font-size: 24px;
+      animation: antFall 12s linear infinite;
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    @keyframes antFall {
+      0% {
+        top: -10px;
+        left: var(--start-position);
+        opacity: 1;
+      }
+      100% {
+        top: 100%;
+        left: var(--start-position);
+        opacity: 0;
+      }
+    }
+
+    .text-container img {
+      margin-bottom: 20px;
+      max-width: 100%; /* Make the image responsive */
+      height: auto;
+    }
+
+    .contact-button {
+      font-size: 24px;
+      text-decoration: underline;
+      text-decoration-style: solid;
+      text-underline-offset: 3px;
+      margin-top: 20px;
+    }
+
+    /* Styles for the external buttons */
+    .external-buttons {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      display: flex;
+    }
+
+    .external-buttons a {
+      margin-left: 10px;
+      text-decoration: underline;
+    }
+
+    /* Media query for mobile responsiveness */
+    @media (max-width: 768px) {
+      body {
+        font-size: 12px; /* Reduce base font size */
+      }
+
+      h1 {
+        font-size: 24px; /* Reduce heading size */
+      }
+
+      .fading-text {
+        font-size: 16px; /* Reduce fading text size */
+      }
+
+      .ant {
+        font-size: 16px; /* Reduce ant size */
+      }
+
+      .contact-button {
+        font-size: 18px; /* Reduce button size */
+      }
+
+      .text-container img {
+        width: 80%; /* Make the image smaller on mobile */
+      }
+    }
   </style>
 </head>
 <body>
@@ -170,30 +200,30 @@
   <footer>[made by ant]</footer>
 
   <script>
-  function createAnt() {
-    const ant = document.createElement('div');
-    ant.classList.add('ant');
-    ant.textContent = '🐜';
-    ant.style.setProperty('--start-position', `${Math.random() * 100}%`);
-    document.querySelector('.ant-rain').appendChild(ant);
-  }
-
-  function rainAnts(numAnts) {
-    for (let i = 0; i < numAnts; i++) {
-      createAnt();
+    function createAnt() {
+      const ant = document.createElement('div');
+      ant.classList.add('ant');
+      ant.textContent = '🐜';
+      ant.style.setProperty('--start-position', `${Math.random() * 100}%`);
+      document.querySelector('.ant-rain').appendChild(ant);
     }
-  }
 
-  setInterval(() => {
-    rainAnts(1);
-  }, 250);
+    function rainAnts(numAnts) {
+      for (let i = 0; i < numAnts; i++) {
+        createAnt();
+      }
+    }
 
-  const audio = document.getElementById("myAudio");
+    setInterval(() => {
+      rainAnts(1);
+    }, 250);
 
-  document.body.addEventListener('click', function() {
-    this.classList.add('clicked');
-    audio.play();
-  });
+    const audio = document.getElementById("myAudio");
+
+    document.body.addEventListener('click', function() {
+      this.classList.add('clicked');
+      audio.play();
+    });
   </script>
 </body>
 </html>
