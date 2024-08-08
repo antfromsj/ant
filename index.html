@@ -170,60 +170,78 @@
         width: 80%; /* Make the image smaller on mobile */
       }
     }
-  </style>
-</head>
-<body>
-  <audio id="myAudio" loop>
-    <source src="VISION.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
-  <div class="external-buttons">
-<a href='https://instagram.com/antfromsc/' target='_blank' rel='noreferrer'>IG</a>
-    <a href="https://antfromsj.github.io/ant.github.io/portfolio"> >PORTFOLIO</a>
-  </div>
-
-  <div class="ant-rain"></div>
-  <div class="centered">
-    <h1>LIFE IS A GAME.<br>MONEY IS HOW WE KEEP SCORE.</h1>
-
-    <div class="text-container">
-      <img src="globe.gif" alt="Globe animation">
-      <div class="fading-text">WEB DEVELOPMENT</div>
-      <div class="fading-text">VIDEO EDITING</div>
-      <div class="fading-text">VIDEOGRAPHY</div>
-      <div class="fading-text">PHOTOGRAPHY</div>
-      <a class="contact-button" href="mailto:ant@uliexpress.co">CONTACT</a>
-    </div>
-  </div>
-
-  <footer>[made by ant] WORK HEAVILY IN PROGRESS. WILL BE FINISHED SOON.</footer>
-
-  <script>
-    function createAnt() {
-      const ant = document.createElement('div');
-      ant.classList.add('ant');
-      ant.textContent = '🐜';
-      ant.style.setProperty('--start-position', `${Math.random() * 100}%`);
-      document.querySelector('.ant-rain').appendChild(ant);
-    }
-
-    function rainAnts(numAnts) {
-      for (let i = 0; i < numAnts; i++) {
-        createAnt();
+    /* Reduce ant frequency and opacity for performance */
+    @media (max-width: 768px) {
+      .ant {
+        font-size: 12px; /* Reduce ant size further */
+        opacity: 0.6; /* Make ants slightly more transparent */
       }
     }
+    </style>
+  </head>
+  <body>
+    <audio id="myAudio" loop>
+      <source src="VISION.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
 
-    setInterval(() => {
-      rainAnts(1);
-    }, 250);
+    <div class="external-buttons">
+      <a href='https://instagram.com/antfromsc/' target='_blank' rel='noreferrer'>IG</a>
+      <a href="https://antfromsj.github.io/ant.github.io/portfolio"> >PORTFOLIO</a>
+    </div>
 
-    const audio = document.getElementById("myAudio");
+    <div class="ant-rain"></div>
+    <div class="centered">
+      <h1>LIFE IS A GAME.<br>MONEY IS HOW WE KEEP SCORE.</h1>
 
-    document.body.addEventListener('click', function() {
-      this.classList.add('clicked');
-      audio.play();
-    });
-  </script>
-</body>
-</html>
+      <div class="text-container">
+        <img src="globe.gif" alt="Globe animation">
+        <div class="fading-text">WEB DEVELOPMENT</div>
+        <div class="fading-text">VIDEO EDITING</div>
+        <div class="fading-text">VIDEOGRAPHY</div>
+        <div class="fading-text">PHOTOGRAPHY</div>
+        <a class="contact-button" href="mailto:ant@uliexpress.co">CONTACT</a>
+      </div>
+    </div>
+
+    <footer>[made by ant] WORK HEAVILY IN PROGRESS. WILL BE FINISHED SOON.</footer>
+
+    <script>
+      function createAnt() {
+        const ant = document.createElement('div');
+        ant.classList.add('ant');
+        ant.textContent = '🐜';
+        ant.style.setProperty('--start-position', `${Math.random() * 100}%`);
+        document.querySelector('.ant-rain').appendChild(ant);
+
+        // Remove ants after they finish their animation
+        setTimeout(() => {
+          ant.remove();
+        }, 12000); // Match this to your antFall animation duration
+      }
+
+      let antInterval;
+
+      function startRainingAnts() {
+        antInterval = setInterval(() => {
+          createAnt();
+        }, 500); // Increased interval for less frequent ants
+      }
+
+      // Start with a lower ant frequency on mobile
+      if (window.innerWidth <= 768) {
+        startRainingAnts();
+      } else {
+        // Higher frequency on larger screens
+        startRainingAnts();
+      }
+
+      const audio = document.getElementById("myAudio");
+
+      document.body.addEventListener('click', function() {
+        this.classList.add('clicked');
+        audio.play();
+      });
+    </script>
+  </body>
+  </html>
